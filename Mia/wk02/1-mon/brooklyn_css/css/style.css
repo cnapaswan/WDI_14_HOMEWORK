@@ -1,0 +1,46 @@
+*{
+  border: 0;
+  padding: 0;
+  color: #6d6d6d;
+}
+
+.logo {
+  padding: 30px 184px;
+}
+
+div, content,footer {
+  display: block;
+  width: 960px;
+  margin: 0 auto;
+}
+
+}
+
+h1, h2 {
+  font-family: "Lucida Console", "Lucida Sans Typewriter", monaco;
+  font-style: normal;
+  line-height: 26.4px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #69b2ea;
+}
+
+a {
+  color: #69b2ea;
+  text-decoration: none;
+}
+
+.presslogo img{
+  width: 224px;
+  margin: 2px;
+  border: solid 4px #a1a1a1;
+}
