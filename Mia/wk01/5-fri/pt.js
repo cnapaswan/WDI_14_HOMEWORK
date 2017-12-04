@@ -1,6 +1,24 @@
+/*Your function then checks if the stations are valid, 
+and if they aren’t then it ends the function with a message to the user 
+to enter a valid station. As the code is now, 
+the user will have to refresh the page in order to input the station names again. 
+
+Can you think of a way to keep getting input until it is valid? 
+The check is also case sensitive, which means if I type in richmond or RICHMOND then the check will fail.
+
+You’re using if and else if when there are only two possible conditions. 
+The code will be easier to read if you use else instead of else if in these situations. 
+It will also be faster – every time you have an else if statement, 
+the computer needs to check whether it is truthy or falsy. 
+You won’t notice the difference in situations where you’re checking once, 
+but if you had an additional check inside a loop that went through thousands of times 
+it might start to visibly slow the program.*/
+
+
 var origin = prompt("Please insert origin")
 var destination = prompt("please insert destination")
 
+//
 var stations = [
   ["Flinders Street", "Richmond", "East Richmond", "Burnley", "Hawthorn", "Glenferrie"], 
   ["Flagstaff", "Melbourne Central", "Parliament", "Richmond", "Kooyong", "Tooronga"], 
