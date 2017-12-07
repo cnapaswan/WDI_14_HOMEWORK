@@ -1,0 +1,130 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Bungee', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 80%;
+  padding-bottom: 15%;
+  background-color: #FFE9D6;
+  margin: 0 auto;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.logo {
+  display: inline-block;
+  width: 30%;
+  padding: 40px;
+}
+
+header img {
+  width: 100%;
+}
+
+header h1{
+  width: 30%;
+  text-align: center;  
+  margin: 0;
+  font-size: 30px;
+  padding: 160px 0 120px;
+  letter-spacing: 2px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  color: #2A363B;
+  font-weight: 800;
+}
+
+.dummybox {
+  width: 30%;
+}
+
+
+h1, .type, .intro {
+  text-transform: uppercase;
+}
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.saving, .checking {
+  width: 200px;
+  height: 200px;
+  background: #2A363B;
+  padding: 10px;
+  color: #FF847C;
+}
+
+.saving {
+  margin-left: 15%;
+}
+
+.checking {
+  margin-right: 15%;
+}
+
+.type, .intro, .amount {
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+}
+
+.intro {
+  font-family: 'Raleway', sans-serif;
+}
+
+.type {
+  font-size: 25px;
+}
+
+.amount{
+  font-size: 25px;
+  color: #E84A5F;
+}
+
+span {
+  font-size: 30px;
+}
+
+.addMachine {
+  font-size: .5em;
+}
+
+.addMachine {
+  text-align: center;
+}
+.addMachine input {
+  width: 150px;
+  text-align: center;
+}
+.enterAmount {
+  font-size: 12px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 10px 0;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
+
+.withdraw, .deposit {
+  font-size: 10px;
+  font-weight: 300;
+  width: 70px;
+  height: 23px;
+  background-color: #E84A5F;
+  border: none;
+  padding: 2px;
+}
+
