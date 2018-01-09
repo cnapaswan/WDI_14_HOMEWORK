@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>movie choices</title>
+</head>
+<body>
+  <div class="list_wrapper">
+    <ul class="mov_list">
+      <% @list.each do |prop| %>
+        <li>
+          <a class="mov_choice" href="/movie?selected_movie=<%= prop["Title"] %>"><%= prop["Title"] %></a>
+        </li>
+      <% end %>
+    </ul> 
+  </div>
+
+
+
+</body>
+</html>
+

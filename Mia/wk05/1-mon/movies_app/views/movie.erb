@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Page</title>
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+</head>
+<body>
+  <div class="content">
+
+    <h1 class="movie_name"><p><%= "#{@mov_title}" %></p></h1>
+
+    <div class="poster">
+      <img src="<%= "#{@mov_poster}" %>" alt="movieimg">
+    </div>
+
+    <div class="info">
+      <div>
+        <p><%= "<span>Release Date: </span> #{@mov_release}" %></p>
+      </div>
+      <div>
+        <p><%= "<span>Genre: </span>#{@mov_genre}" %></p>
+      </div>
+      <div>
+        <p><%= "<span>language(s): </span> #{@mov_language}" %></p>
+      </div>
+      <div>
+        <p><%= "<span>Director: </span>#{@mov_director}" %></p>
+      </div>
+      <div>
+        <p><%= "<span>Writer: </span>#{@mov_writer}" %></p>
+      </div>
+      <div>
+        <p><%= "<span>Actors: </span>#{@mov_actors}" %></p>
+      </div>
+      <div>
+        <p><%= "<span>Story: </span>#{@mov_story}" %></p>
+      </div> 
+    </div> <!--end of info-->
+  </div> <!--end of content-->
+  
+</body>
+</html>
