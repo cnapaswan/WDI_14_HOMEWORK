@@ -63,7 +63,7 @@ get '/movie' do
       '#{@mov_director}',
       '#{@mov_writer}',
       '#{@mov_actors}', 
-      '#{@mov_story}',
+      '#{@mov_story.gsub("'","''")}',
       '#{@mov_imdbID}');"
 
       conn.exec(sql)
