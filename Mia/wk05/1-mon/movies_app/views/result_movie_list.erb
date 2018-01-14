@@ -9,7 +9,9 @@
     <ul class="mov_list">
       <% @list.each do |prop| %>
         <li>
-          <a class="mov_choice" href="/movie?selected_movie=<%= prop["Title"] %>"><%= prop["Title"] %></a>
+          <a class="mov_choice" href="/movie?id=<%= prop["imdbID"] %>">
+            <%= prop["Title"] %>
+          </a>
         </li>
       <% end %>
     </ul> 
@@ -19,4 +21,3 @@
 
 </body>
 </html>
-
