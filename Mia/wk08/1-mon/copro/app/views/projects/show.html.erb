@@ -1,0 +1,46 @@
+<h1><%= @project.title%></h1>
+<div class="wrapper">
+  <span class="heart">
+  💙</span> <!--HTML: &#x1F499; or &#128153;-->
+
+  <img src="<%= @project.preview %>" alt="">
+</div>
+
+
+<form action="/likes" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="hidden" name="user_id" value="<%= session[:user_id]%>">
+  <input type="hidden" name="project_id" value="<%= @project.id %>">
+
+  <span class="count"><%= @project.likes.count %></span>
+  <button>LIKE</button>
+</form>
+
+<% @comment.each do |comment|%>
+<p> User - <%= comment.user_id %> said: </p>
+<p><%= comment.body %></p>
+<% end %>
+
+<form action="/comments" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="">comment below</label>
+  <!-- <input type="text" name="body"> my old code/dt one below-->
+  <textarea name="body" id="" cols="30" rows="10"></textarea>
+  <input type="hidden" name="user_id" value="<%= session[:user_id]%>">
+  <input type="hidden" name="project_id" value="<%= @project.id %>">
+  <button>submit</button>
+  
+</form>
+
+
+<script>
+
+var heart = document.querySelector('.heart')
+heart.addEventListener('click', dosmth)
+
+function dosmth(){
+var body = event.target.closest('body')
+var likesCount = body.querySelector('.count') 
+likesCount.textContent = Number(likesCount.textContent) +1
+}
+</script>
