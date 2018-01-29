@@ -1,0 +1,67 @@
+label, input {
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  width: 50%;
+  position: relative;
+}
+
+.wrapper span {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: #EC7063;
+  font-size: 2em;
+}
+
+.wrapper span:hover {
+  cursor: pointer;
+  color: #E74C3C;
+}
+
+.project {
+  width: 50%;
+  background-color: mistyrose;
+  border: solid 1px red;
+}
+
+.project img {
+  display: block;
+}
+
+.project h2 {
+  display: none;
+}
+
+
+
+/* (normal laptop)
+if screen is bigger than 400px do following */
+@media (min-width: 400px){
+  .project {
+    width: 25%;
+  }
+
+  .project h2 {
+  display: block;
+  }
+
+  .wrapper {
+  width: 50%;
+  position: relative;
+  }
+
+  .wrapper span {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: red;
+  font-size: 2em;
+  }
+}

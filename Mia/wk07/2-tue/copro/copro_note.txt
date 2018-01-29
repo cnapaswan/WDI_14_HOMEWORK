@@ -1,0 +1,268 @@
+NOTE FROM SHERRY
+***Pre-setting***       /  (Rails Notes Tue 23 Jan 2018)
+**Start new project - copra
+—————————————————————————————————————————————
+# Install
+
+$ rails new copro -d=postgresql -GT --skip-coffee --skip-turbolinks 
+  (create new rails folder)
+$ rails g resource user email password_digest:text (shortcut)
+(:sting for email is by default,
+$ rails db:create
+$ rails console (go to console to check)
+$ rails db:migrate
+$ rails s (shortcut)
+$ rails g resource project title:string user:references
+$ rails db:migrate
+$ rails c (check console)
+
+——    ——    ——    ———    ——    ——    ——    ——   ——    ——    ——    ———    ——    ——    
+
+# style reset.css file (see bottom section)
+
+——    ——    ——    ———    ——    ——    ——    ——   ——    ——    ——    ———    ——    ——    
+# change configuration file (Always run bundle when u make any change for configuration)
+
+— gem 'pry-rails’   — add into the Gemfile line 38.. under line “group :development do”
+$ Bundle ( Run bundle, and restart server). 
+$rails s 
+$ rails c
+
+# coding in “/migrate/seed.rb”below,    ***and restart server and test and run***.(very important)
+  Code:   
+——    ——    ——    ———    ——    ——    ——    ——   ——    ——    ——    ———    ——    ——    
+```Project.delete_all. # (delete ingore everything,just delete)
+User.delete_all
+
+arr1 = ['mistyrose', 'fairy', 'cake', 'candy']
+arr2 = ['pudding', 'muffin', 'floss', 'crush']
+
+user = User.new
+user.email = 'berry@ga.co'
+user.save
+
+10.times do
+    Project.create(
+        title: "#{arr1.sample} #{arr2.sample}", 
+        user_id: user.id
+        )
+end```
+——    ——    ——    ———    ——    ——    ——    ——   ——    ——    ——    ———    ——    ——    
+
+— rails db:seed. (Run seed.rb file to get 10++ items into ur db. Repeat this 2 steps to refresh ur db..always make new sample 10 or nums ‘ sample) 
+
+# change Gemfile
+— gem 'bcrypt', '~> 3.1.7’. (Uncommon this line 27 Gemfile.. before “{# Use Capistrano for deployment# gem 'capistrano-rails', group: :development”}) — (this step is for user model, we need this one to )
+
+#
+ — update “user.rb(under concerns folder)” as below  (we change this for secure password login,  have to restart server, console and so on after this step)
+(class User < ApplicationRecord
+    has_secure_password
+end)
+
+
+#
+>Project.delete_all (if u don’t need db, capital letter)
+
+
+# change
+gem 'carrierwave' 
+$ bundle
+
+
+# https://github.com/carrierwaveuploader/carrierwave
+#Getting Started— Start off by generating an uploader:  preview_uploader.rb default file is good enough
+
+$ rails g uploader Preview
+   
+    Running via Spring preloader in process 34688
+     create  app/uploaders/preview_uploader.rb
+
+# ActiveRecord — Add a string column to the model you want to mount the uploader by creating a migration:
+
+$ rails g migration add_preview_to_projects preview:string
+    
+    Running via Spring preloader in process 34732
+     invoke  active_record
+     create    db/migrate/20180124011315_add_preview_to_projects.rb
+
+$ rails db:migrate
+
+#. Add require into environment.rb (/app/config ) Make sure you are loading CarrierWave after loading your ORM, otherwise you'll need to require the relevant extension manually, e.g.:
+
+require 'carrierwave/orm/activerecord' (in file)
+
+*** Making uploads work across form redisplays ***
+tell how to write form
+Test:
+
+>project.preview.url
+>project.preview.filename
+——————————————————————————————————————
+##*Tips: 
+($ spring stop (to make spring stop))    or make other files stop to check becuse of this file’s reason case browser doesn’t work
+
+Message @Sherry Li
+
+*bold* _italics_ ~strike~ `code` ```preformatted``` >quote
+
+
+________________________________
+set up fog (storage on s3 aws amazon)
+1.in preview_uploader.rb
+    comment out
+    #storage :file
+    and turn this one
+    (((storage :fog)))
+2. create file (((fog.rb))) under initailizers folder
+
+3. in fog.rb paste in CarrierWave config (see in file)
+
+_________________________
+set up the user bucket thing on s3 
+from amazon users
+https://console.aws.amazon.com/iam/home?region=us-east-2#/users/meeah?section=security_credentials
+^ the key is here but secret only available first time
+put export "S3_KEY= smth those key"
+put export "s3_secret = blah got from the site"
+
+__________________________________
+thursday 
+
+DT talking about database table, the column they got and relationship between each table
+user
+project
+  -user_id
+  -creator_id # not implemented now , its for later
+  -owner_id# not implemented now , it's for later
+comment
+
+files to concern when creating new method or page
+
+- migrate (from create)(check before migrate)
+- schema
+- model 
+   - in each method does it own or belong to other method (table)
+   - projects belong to user
+   - comments belong to user
+   - comments belong to project
+   * reverse (has_many)
+-routes
+- views/<table_name>/ file for the page that has route address
+
+-controllers (work like main.rb in sinatra) it manage pages landing of that topic and the method in them 
+  ex. - 
+  project has (((new))) pagelanding at the route of((('/')))that has (((create))) method at the route of ((('/projects/new'))) for creating new projects. project controller also has (((show)))page landing ** (((show))) has (((create))) method at the route of ((('/comment'))) *** but comments is not just another colum in projects table so the controller of (((create))) method is in the comments_controller
+___________________________________________
+i asked about making mistake in create and alrd migrate
+1 you can roll back
+2 change in your migrate file(the one with time stamp)
+3 migrate it back
+4 your schema.rb be upgrade after migrate everytime
+
+***** this is not a good way
+***** you cant do it when you work as team 
+***** if your code is shared you cant roll back
+***** you have to create the new migration like whole new to fix it 
+ WITH (((rails g migration <method(add,edit)>)))
+rails g migration add subject_to_comments subject:string
+rails g migration edit 
+
+_________________________________________
+
+to log out the user
+the session[:user_id] has to be set to (((nil)))
+
+(((session[:user_id] = nill)))
+
+ex - in your application.html.erb file
+
+  <body>
+    <%= session[:user_id]= nil%>
+    <%= yield %>
+  </body>
+
+
+___________________________________________
+
+MANY TO MANY (join table)
+1 PROJECT is own by many USERS
+and 1 USER owns many PROJECTS
+
+USER ---------------- PROJECT
+        owner
+    ----------------
+        member
+    ----------------
+        access
+    ----------------
+        like
+
+perfect example for MANY to MANY is
+
+RECIPES ---------------- INGREDIENTS
+         
+apple pie---------------- apple
+apple candy--------------'
+apple fries--------------'
+
+the joined table name HAS TO BE
+'ingredients_recipes'
+*activerecord rule
+
+
+ -------------------------
+
+ USER -|-----<like<-------|PROJECT
+likign thing = create new like item!
+
+like = Like.new
+like.user_id = 1
+like.project_id = 1
+like.save
+voila!
+
+like become an object record of project and user
+p1 = Project.find(params[:id])
+p1.likes.count = number of likes in thr p1
+
+
+_________________________________
+CSS absolute and relative
+
+.wrapper {
+  width: 50%;
+  position: relative;
+}
+
+.wrapper img {
+  width: 100%;
+  position static;
+}
+
+.wrapper span {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+html
+
+<div class="wrapper">
+  <span style="
+  color: red;
+  font-size: 2em;">
+  💙</span> <!--HTML: &#x1F499; or &#128153;-->
+
+  <img src="<%= @project.preview %>" alt="">
+</div>
+
+i want span to have the position relate to the wrapper class so
+you set the parent(.wrapper) to relative
+and set the span to absolute (it will consider position of parent)
+i ignore the img inside that div
+
+
+______________________________
+amazon user aws info
+https://console.aws.amazon.com/iam/home?region=us-east-2#/users/meeah?section=groups

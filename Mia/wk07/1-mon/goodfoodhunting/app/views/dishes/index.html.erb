@@ -1,0 +1,24 @@
+<body 
+style="background-color: mistyrose;" >
+
+<h1 style="color: #148F77;"> 
+  ❀ PUSHEEN FAVS ❀ 
+</h1>
+
+<% @dishes.each do |dish| %>
+  <a href="/dishes/<%= dish.id %>" 
+    style="
+    text-decoration: none; 
+    color: #D35400;
+    ">
+    <h1> <%= dish.name %></h1>
+    <h2> my id: <%= dish.id %> </h2>
+    <img src="<%=dish.image_url%>" alt="food image" width="30%">
+  </a>
+  <p style="color: #F39C12;">
+   ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ 
+  </p>
+
+<%end%>
+
+</body>

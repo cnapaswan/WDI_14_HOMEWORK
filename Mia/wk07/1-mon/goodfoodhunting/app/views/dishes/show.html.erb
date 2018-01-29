@@ -1,0 +1,27 @@
+<body style="background-color: mistyrose;">
+  
+
+<h1 style= "color: #148F77;"> ❀ PUSHEEN FAV ❀ 
+</h1>
+
+<h1 style="color: #D35400;"> 
+  <%= @dish.name %>
+</h1>
+<img src="<%= @dish.image_url %>" alt="foodimage" width="40%">
+
+<a href="/dishes/<%= @dish.id %>/edit">
+  <button>edit</button>
+</a>
+
+
+
+
+<%= @dish.name %>
+<form action="/dishes/ <%= @dish.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <button>delete</button>
+
+</form>
+
+</body>
