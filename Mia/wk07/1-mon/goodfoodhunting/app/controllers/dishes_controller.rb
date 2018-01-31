@@ -20,7 +20,7 @@ class DishesController < ApplicationController
   end
 
  
-  def edit
+  def update
     @dish = Dish.find(params[:id])
     @dish.name = params[:name]
     @dish.image_url = params[:image_url]
