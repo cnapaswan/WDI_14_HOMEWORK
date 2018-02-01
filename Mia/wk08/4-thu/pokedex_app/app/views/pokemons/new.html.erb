@@ -1,0 +1,14 @@
+<h1>new mons go here</h1>
+
+<form action="/api/create" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="">Species</label>
+  <input type="text" name="species">
+  <label for="">Nick Name</label>
+  <input type="text" name="nickname">
+  <label for="">Level</label>
+  <input type="text" name="level">
+  <label for="">Image</label>
+  <input type="text" name="imgurl">
+  <button>add</button>
+</form>

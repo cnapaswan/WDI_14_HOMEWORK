@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PokedexApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <script src="http://code.jquery.com/jquery-3.3.1.js"   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="   crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <h1>POKEMON LOVES POKED</h1>
+    <nav>
+      <a href="/index">
+        <li>see all babies</li>
+      </a>
+      <a href="/pokemons/new">
+        <li>add baby</li>
+      </a>
+      <a href="pokemons/play">
+        <li>release babies</li>
+      </a>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

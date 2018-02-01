@@ -1,0 +1,16 @@
+
+
+<% @pokemons.each do |pokemon|%>
+  <div class="pokemon-hugger">
+    <h2><%= pokemon.nickname%></h2>
+    <img src="<%= pokemon.imgurl %>" alt="">
+    <li>species: <%=pokemon.species%></li>
+    <li>level: <%=pokemon.level%></li>
+  </div>
+
+<%end%>
+
+  <h3>catched someone new?</h3>
+  <form action="/pokemons/new">
+    <input type="submit" value="go add!">
+  </form>
