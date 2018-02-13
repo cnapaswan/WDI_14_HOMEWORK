@@ -10,8 +10,7 @@ class Queens
     else 
       @white = [0, 3]
       @black = [7, 3]
-    end
-    
+    end    
   end
 
   def white
@@ -29,7 +28,7 @@ class Queens
 
   def to_s
     boardgen
-    
+    #findindex of each O position
   end
 
 
