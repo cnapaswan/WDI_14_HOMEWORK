@@ -28,7 +28,7 @@ class Queens
 
   def to_s
     boardgen
-    #findindex of each O position
+    #findindex of each O position + place  B and W
   end
 
 
