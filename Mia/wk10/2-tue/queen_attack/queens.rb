@@ -10,6 +10,7 @@ class Queens
     else 
       @white = [0, 3]
       @black = [7, 3]
+      @board
     end    
   end
 
@@ -23,12 +24,14 @@ class Queens
 
   def boardgen
     boardline = "O " * 8
-    board2 = (boardline.strip + "\n") * 7 + boardline.strip 
+    @board = (boardline.strip + "\n") * 7 + boardline.strip 
   end
 
   def to_s
     boardgen
-    #findindex of each O position + place  B and W
+    @board[24] = "x"
+
+    
   end
 
 
