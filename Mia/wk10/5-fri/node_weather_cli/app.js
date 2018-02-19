@@ -10,4 +10,6 @@ request({
     json: true
 }, function (error, response, body) {
     console.log(city + " current temperature is " + body.main.temp)
+    console.log(url)
+    console.log("body", body)
 })
